@@ -61,20 +61,19 @@ var quotesArray = [
     name: "-- Alex Smith",
   },
 ];
+var x = 0;
 function changeQuote() {
-  var num = Math.round(Math.random() * 10);
-  if (num < quotesArray.length && quotesArray.length != 0) {
-    var arr = [0];
-    arr.push(num);
-    for (let i = 0; i < arr.length; i++) {
-      if (num == arr[arr.indexOf(num) - 1]) {
-        num += 1;
-      }
-    }
+  var num = Math.floor(Math.random() * quotesArray.length);
+  if (num != x) {
+    x = num;
+  } else {
+    x += 1;
+  }
+  if (x < quotesArray.length && quotesArray.length != 0) {
     var box = `
-    <img src="${quotesArray[num].imag}" class="img-thumbnail rounded-circle mb-3" width="110px" height="110px" alt="">
-    <p class="lead">${quotesArray[num].quote}</p>
-    <h2>${quotesArray[num].name}</h2>
+    <img src="${quotesArray[x].imag}" class="img-thumbnail rounded-circle mb-3" width="110px" height="110px" alt="">
+    <p class="lead">${quotesArray[x].quote}</p>
+    <h2>${quotesArray[x].name}</h2>
     `;
     document.getElementById("quote").innerHTML = box;
   }
